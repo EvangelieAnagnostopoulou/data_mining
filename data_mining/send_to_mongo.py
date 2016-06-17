@@ -37,24 +37,9 @@ def send_to_mongo(user_id, provider, uuid, extra_data, likes, photos, posts, gps
     print user
     optimum_users = mongo_db["OptimumUsers"]
 
-    result = optimum_users.insert_one(user)
-    #replace
-    #result = optimum_users.replace_one({"id": user_id},user)
-
-def update(id, field):
-    mongo_conn = MongoClient('mongodb://euprojects.net:3368')
-    mongo_db = mongo_conn.Optimum
-    cols = mongo_db.collection_names()
-    print cols
-
-    optimum_users = mongo_db["OptimumUsers"]
-
-    result = optimum_users.update_one(
-                    {"id": id},
-                    {"$set": field}
-                )
-    for messages in optimum_users.find():
-            print messages
+    result = optimum_users.update({"id": user_id},{"$set": user},True,True)
+    '''for messages in optimum_users.find():
+            print messages'''
 
 def send_messages_to_mongo():
     mongo_conn = MongoClient('mongodb://euprojects.net:3368')

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if not user.is_authenticated %}
+<div class="center">
+    <h2>Multi-source Big Data Fusion Driven Proactivity for Intelligent Mobility</h2>
+    <h6>The EU-funded OPTIMUM project is working to unveil state-of-the-art information technology solutions
+            to improve transit, freight transportation and traffic connectivity throughout Europe. Through tailor-made
+            applications, OPTIMUM is striving to bring proactive and problem-free mobility to modern transport systems
+            by introducing and promoting interoperability, adaptability and dynamicity.</h6>
+    <h3 class="center">Background</h3>
+    <h6>The transportation sector is undergoing considerable transformation with seamless connectivity and ever-increasing
+            mobility options. Modern transportation systems have to mitigate problems emerging from complex mobility
+            environments and the intensive use of transport networks, such as excessive CO2 emissions, high congestion
+            levels and diminished quality of life. Due to the saturation and complexity of transport networks, innovative
+            solutions to these problems need to be underpinned by collected, processed and broadcasted data from various
+            sensors, systems, crowdsourcing and service providers. Furthermore, digital-age transport systems will have to
+            anticipate situations in near real time and provide the means for proactive decisions, which, in turn, will
+            prevent problems before they emerge.</h6>
+    <h3>Goals</h3>
+    <ul class="center">
+        <li>
+            Highlighting and demonstrating the benefits and potentials of big data fusion and proactive behaviour in the diverse
+            and multi-modal transportation context by designing a distributed and scalable architecture for its efficient realization.
+        </li>
+        <li>
+                To enable comprehensive observing of the transport ecosystem, by designing and developing a smart sensing system able
+                to cope with a huge amount of heterogeneous data in real-time
+        </li>
+        <li>To enable semantic understanding of acquired data in near real time by designing and developing an efficient management
+                framework for dynamic (proactive) and context-aware anticipation and detection of the situations of interest on the basis
+                of complex and predictive data analysis algorithms and event-detection</li>
+        <li>
+                To support proactive decisions and sustainable transportation behaviours through proactive information provisioning and
+                personalization, persuasive mechanisms, including novel incentive schemes, for behavioural changes and real time multimodal
+                routing and navigation algorithms
+        </li>
+        <li>
+                To extend existing forecasting models by integrating Traveller2Traveller (T2T) and crowd sourcing behavioural interactions
+        </li>
+    </ul>
+    <h6>For more information visit <a href="http://www.optimumproject.eu/">http://www.optimumproject.eu/</a></h6>
+
+    <h4>Help us to our research</h4>
+    <p><a class="btn btn-primary" href= "{% url 'socialauth_begin' 'facebook' %}?next={{ request.path }}"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"> Login</i></a></p>
+
+    </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div style="min-height:250px;">
+        <div class="center" style="background-image: url(../static/img/thank.jpg); height:300px; width: 40%;margin-bottom:10%;">
+             <h3 style="padding:30px;padding-left:0px;">Dear {{user}},</h3>
+           <h3 style="padding-top:100px; padding-left:35%;">Thank you for your participation.</h3></div>
+        </div>
+    </div>
+{% endif%}
+
+<footer id="footer" class="footer" style="background-color:#000;border-radius: 4px;min-height: 250px;">
+
+    <p class="center"><img src="/static/img/optimum_logo.png" class="tile-image text-center"></p>
+    <div class="text-center">This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 636160-2.</div>
+    <div class="text-center">Copyright © 2016 .All rights reserved.</div>
+</footer>
+
+{% endblock %}

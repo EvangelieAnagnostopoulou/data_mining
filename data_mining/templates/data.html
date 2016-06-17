@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="min-height:250px;">
+    <h3>Your likes</h3>
+    <ul>
+        {% for r in result.data%}
+            <li>{{r.name}}</li>
+        {% endfor%}
+
+    </ul>
+</div>
+
+{% endblock%}

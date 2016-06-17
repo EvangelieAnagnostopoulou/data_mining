@@ -1,0 +1,5 @@
+django == 1.7
+django-social-auth
+oauth2client
+django-allauth
+importlib

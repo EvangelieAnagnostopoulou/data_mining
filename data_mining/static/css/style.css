@@ -1,0 +1,64 @@
+.adp-fullwidth {
+    width: 75%;!important
+}
+.user-info {
+    color: #fff;
+    padding: 10px;
+    float: right;
+    font-size: 11px;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.user-info img {
+    height: 20px;
+}
+
+.admin-icon {
+    opacity: 0.5;
+    transition: opacity 0.25s;
+
+}
+
+.admin-icon:hover {
+    opacity: 1;
+    height: 20px;
+}
+
+.list-success{
+background-color: #93c54b;
+}
+
+a.list-success:hover{
+background-color: #93c54b;
+}
+
+a.list-success:focus{
+background-color: #93c54b;
+}
+
+/*.footer, .push {
+    min-height: 250px;
+} */
+.footer{
+    width:100%;
+}
+
+p.center { text-align: center; }
+
+div.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+   text-align: center;
+}
+
+ul.center {
+  text-align: center;
+  padding: 0;
+}
+li.center {
+  display: inline-block;
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron" style="width:30%;left:35%;position:absolute;background-color:#ecf0f1; margin:10px; padding:10px;">
+
+    <form action="." method="POST"> {% csrf_token %}
+
+        <div class="login-screen">
+          <div class="login-icon">
+
+            <h4>Welcome to Optimum</h4>
+              <a href="{% url 'socialauth_begin' 'google-oauth2' %}"><img src="/static/img/google.jpg" style="width:30px;height:30px;margin:5px;" ></a>
+              <a href="{% url 'socialauth_begin' 'facebook' %}?next={{ request.path }}"><img src="/static/img/facebook.png" style="width:30px;height:30px;margin:5px;" ></a>
+          </div>
+          {% if form.errors %}
+            <div class="alert alert-dismissible alert-danger">
+                <p>{{form.errors}}</p>
+            </div>
+            {% endif %}
+
+          <div class="login-form">
+            {% if error %}
+              <p class="error">{{error}}</p>
+            {% endif %}
+            <div class="form-group">
+              <input class="form-control login-field" value="" placeholder="Enter your name" id="login-name" type="text" name="login">
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control login-field" value="" placeholder="Password" id="login-pass" type="password" name="password">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <input type="submit" class="btn btn-success btn-lg btn-block" value="Log in" />
+
+          </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -174,7 +174,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = [
     'email',
     'user_friends',
     'friends_location',
-    'picture'
+    'picture',
 ]
 
 FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'ru_RU'}

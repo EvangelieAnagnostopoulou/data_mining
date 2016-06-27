@@ -240,3 +240,8 @@ def get_facebook_data(request):
         likes=json.loads(res.text)
 
     return render(request, "data.html", {'result': json.loads(res.text)})
+
+def thanks(request):
+     if request.method == 'GET':
+        return render(request, "thanks.html")
+

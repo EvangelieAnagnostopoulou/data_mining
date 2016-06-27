@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='home'),
     url(r'', include('social_auth.urls')),
     url(r'^getdata', login_required(views.get_facebook_data)),
+    url(r'^thanks', login_required(views.thanks)),
     # Authentication module
     url(r'^accounts/', include('allauth.urls')),
 

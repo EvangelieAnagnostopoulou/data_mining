@@ -103,7 +103,7 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = '/accounts/login/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/thanks'
 
 TEMPLATE_DIRS = (
   'jaqpot_ui/templates',

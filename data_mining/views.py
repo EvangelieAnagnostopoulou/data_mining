@@ -9,10 +9,29 @@ from social_auth.db.django_models import UserSocialAuth
 # Home page
 def index(request):
     if request.method == 'GET':
-        if not request.user:
-            return redirect('/accounts/login')
-        #social_user = request.user.social_auth.filter(provider='facebook',).first()
-        try:
+        return render(request, "mainPage.html",)
+
+def get_facebook_data(request):
+    social_user = request.user.social_auth.filter(provider='facebook',).first()
+    if social_user:
+
+        url = u'https://graph.facebook.com/{0}/' \
+              u'likes?access_token={1}&limit=1000'.format(
+                  social_user.uid,
+                  social_user.extra_data['access_token'],
+              )
+        #url = 'https://graph.facebook.com/v2.5/me/friends?access_token='+social_user.extra_data['access_token']
+        print url
+        res = requests.get(url)
+        print res.text
+        likes=json.loads(res.text)
+
+    return render(request, "data.html", {'result': json.loads(res.text)})
+
+
+def thanks(request):
+     if request.method == 'GET':
+         try:
             social_user = request.user.social_auth.filter(provider='facebook',).first()
              #Get user likes
             url = u'https://graph.facebook.com/{0}/' \
@@ -220,28 +239,7 @@ def index(request):
                 movies=json.loads(res11.text)
             send_to_mongo(social_user.id, social_user.provider, social_user.uid, social_user.extra_data['access_token'], likes, photos, {},posts,friends_info,user_info, events, tagged_places,books,family,music,movies)
 
-        except:
+         except:
             print('not auth')
-    return render(request, "mainPage.html",)
-
-def get_facebook_data(request):
-    social_user = request.user.social_auth.filter(provider='facebook',).first()
-    if social_user:
-
-        url = u'https://graph.facebook.com/{0}/' \
-              u'likes?access_token={1}&limit=1000'.format(
-                  social_user.uid,
-                  social_user.extra_data['access_token'],
-              )
-        #url = 'https://graph.facebook.com/v2.5/me/friends?access_token='+social_user.extra_data['access_token']
-        print url
-        res = requests.get(url)
-        print res.text
-        likes=json.loads(res.text)
-
-    return render(request, "data.html", {'result': json.loads(res.text)})
-
-def thanks(request):
-     if request.method == 'GET':
-        return render(request, "thanks.html")
+     return render(request, "thanks.html")
 
